@@ -82,8 +82,8 @@ head(activityperday)
 
 ```r
 library(ggplot2)
-g1<- ggplot(activityperday, aes(steps)) + 
-  geom_histogram(bins = 30) + 
+g1<- ggplot(activityperday) + 
+  geom_bar( aes(x = date, y = steps), stat = "identity") + 
   ggtitle("Total steps per day")
 
 plot(g1)
@@ -196,8 +196,8 @@ library(gridExtra)
 ```
 
 ```r
-g2 <- ggplot(activity.newperday, aes(steps)) + 
-  geom_histogram(bins = 30) + 
+g2 <- ggplot(activity.newperday) + 
+  geom_bar(aes(x = date, y = steps), stat = "identity") + 
   ggtitle("Total steps per day, where \n NA = mean of corresponding interval")
 
 grid.arrange(g1, g2, ncol = 2)
